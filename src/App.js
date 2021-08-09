@@ -1,36 +1,26 @@
-import Component from 'react'
-import './App.css';
-import {GoogleMapReact} from 'google-map-react';
+import React from 'react'
+import { CssBaseline, Grid } from '@material-ui/core'
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+import Header from './components/Header/Header'
+import List from './components/List/List'
+import Map from './components/Map/Map'
+import PlaceDetails from './components/PlaceDetails/PlaceDetails'
 
-class App extends Component {
-  static defaultProps = {
-    center: {
-      lat: 59.95,
-      lng: 30.33
-    },
-    zoom: 11
-  };
-
-  render() {
+const App = () => {
     return (
-      // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key:'AIzaSyBRU1o4lyOoDNRhe10VRPeLJtIfUcSdtds'}}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-        >
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text="My Marker"
-          />
-        </GoogleMapReact>
-      </div>
+        <>
+            <CssBaseline/>
+            <Header/>
+            <Grid container spacing={3} style={{ width:'100%' }}>
+                <Grid item xs={12} md={4}>
+                    <List/>
+                </Grid>
+                <Grid item xs={12} md={8}>
+                    <Map/>
+                </Grid>
+            </Grid>
+        </>
     );
-  }
 }
 
 export default App;
